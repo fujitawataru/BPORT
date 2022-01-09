@@ -1,0 +1,36 @@
+<div class= "container">
+ <div class="row">
+
+   <% if @post.errors.any? %>
+       <div id="error_explanation">
+        <h2><%= @post.errors.count %>件のエラーが発生しました</h2>
+          <ul>
+           <% @post.errors.full_messages.each do |message| %>
+           <li><%= message %>
+            <% end %>
+            </li>
+          </ul>
+        </div>
+       <% end %>
+
+  <h3>投稿ページ</h3>
+
+     <%= form_with model:@post,local:true do |f| %>
+     <div class="form-group">
+      <label for="標題">Title</label>
+      <%=f.text_field :title,class:"form-control",:placeholder => "表題", id:"標題"%>
+     </div>
+
+     <div class="form-group">
+      <label for="相談内容">Text</label>
+      <%=f.text_area :text,class:"form-control",:placeholder => "相談内容を入力してください", id:"相談内容" %>
+     </div>
+
+      <p><%= f.submit'投稿',class:"btn btn-success" %></p>
+
+     <% end %>
+     
+   </div>
+  </div>
+  
+  

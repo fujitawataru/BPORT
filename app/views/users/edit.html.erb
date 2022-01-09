@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+     <h2>User info</h2>
+
+      <% if @user.errors.any? %>
+       <div id="error_explanation">
+        <h2><%= @user.errors.count %>件のエラーが発生しました</h2>
+          <ul>
+           <% @user.errors.full_messages.each do |message| %>
+           <li><%= message %>
+            <% end %>
+            </li>
+          </ul>
+        </div>
+       <% end %>
+
+       <%= form_with model:@user,local:true do |f| %>
+
+       <div class="form-group">
+        <label for="name">Name</label>
+        <p><%= f.text_field :name,class:"form-control",id:"name"%></p>
+       </div>
+
+       <p>Image</p>
+        <p><%= f.attachment_field :image %></p>
+
+        <div class="form-group">
+         <label for="introduce">introduction</label>
+         <p><%= f.text_area :introduce, class:"form-control",id:"introduce" %></p>
+        </div>
+
+        <div class="form-group">
+          <label for="person">担当者</label>
+          <p><%= f.text_field :person, class:"form-control",id:"person" %></p>
+        </div>
+
+          <p>業種<p>
+          <p><%= f.select :category, User.categories.keys, {}%></p>
+
+        <p>エリア<p>
+          <p><%= f.select :area, User.areas.keys, {}%></p>
+
+
+         <p><%= f.submit "Update User",class:"btn btn-secondary" %></p>
+       <% end %>
+    </div>
+  </div>
+</div>

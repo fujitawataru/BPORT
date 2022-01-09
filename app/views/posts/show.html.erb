@@ -1,0 +1,45 @@
+<div class="col-md-8 offset-md-1">
+    <h2>投稿内容詳細</h2>
+
+   <table class="table">
+    <tbody>
+     <tr>
+      <td><%= link_to user_path(current_user) do %>
+          <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.png" %></br>
+          <%= @user.name %>
+          <% end %></td>
+
+      <td><%= @post.title %></td>
+
+      <td><%= @post.text %></td>
+
+          <% if @post.user == current_user %>
+      <td><%= link_to"編集",edit_post_path(@post.id),class:"btn btn-sm btn-success" %></td>
+      <td><%= link_to"削除",post_path,method: :delete,class:"btn btn-sm btn-danger",data: {confirm: "本当に消しますか？"} %></td>
+          <% end %>
+
+     </tr>
+   </tbody>
+  </table>
+  
+  <div>
+   <p>コメント件数：<%= @post.comments.count %></p>
+   <% @post.comments.each do |comment| %>
+    <p><%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.png" %></p>
+    <%= comment.user.name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <% if comment.user == current_user %>
+     <div>
+      <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete,class:"btn btn-sm btn-danger",data: {confirm: "本当に消しますか？"} %>
+     </div>
+    <% end %>
+   <% end %>
+  </div>
+  <div>
+   <%= form_with(model:[@post, @comment], local: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントを入力してください" %>
+    <%= f.submit "送信する" %>
+   <% end %>
+  </div>
+  
+ </div>
