@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [:new, :create, :edit, :update, :show, :index, :destroy] do
+    collection do
+      get 'search' => 'posts#search'
+    end
     resources :comments, only: [:create, :destroy]
   end
+
+  resources :chats, only: [:create]
+  resources :rooms, only: [:create, :show, :index]
 end

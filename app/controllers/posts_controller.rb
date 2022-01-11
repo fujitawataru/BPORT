@@ -20,7 +20,17 @@ class PostsController < ApplicationController
   end
 
   def index
-   
+   @posts = Post.limit(10).order(" created_at DESC ")
+   @tags = Post.tag_counts_on(:tags).order('count DESC')     # 全タグ(Postモデルからtagsカラムを降順で取得)
+  if @tag = params[:tag]   # タグ検索用
+    @post = Post.tagged_with(params[:tag])   # タグに紐付く投稿
+  end
+  end
+
+  def search
+   @posts = Post.search(params[:keyword])
+   @keyword = params[:keyword]
+   render "index"
   end
 
   def edit
@@ -36,7 +46,7 @@ class PostsController < ApplicationController
      render :edit
    end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -46,6 +56,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title,:text)
+    params.require(:post).permit(:title,:text,:tag_list)
   end
 end

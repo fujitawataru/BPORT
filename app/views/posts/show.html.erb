@@ -5,13 +5,17 @@
     <tbody>
      <tr>
       <td><%= link_to user_path(current_user) do %>
-          <%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.png" %></br>
+          <%= attachment_image_tag @user, :image,width: '30%', height: '30%', format: 'jpeg', fallback: "no.image.png" %></br>
           <%= @user.name %>
           <% end %></td>
 
       <td><%= @post.title %></td>
 
       <td><%= @post.text %></td>
+
+      <td><% @post.tag_list.each do |tag| %>
+             <span class="btn  btn-sm btn-primary mt-1 "><%= tag %></span>
+             <% end %></td></td>
 
           <% if @post.user == current_user %>
       <td><%= link_to"編集",edit_post_path(@post.id),class:"btn btn-sm btn-success" %></td>
@@ -21,25 +25,29 @@
      </tr>
    </tbody>
   </table>
-  
+
   <div>
    <p>コメント件数：<%= @post.comments.count %></p>
    <% @post.comments.each do |comment| %>
-    <p><%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.png" %></p>
-    <%= comment.user.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <p><%= attachment_image_tag @user, :image,width: '30%', height: '30%', format: 'jpeg', fallback: "no.image.png" %></p>
+    <p><%= comment.user.name %></p>
+    <p><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></p>
     <% if comment.user == current_user %>
      <div>
-      <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete,class:"btn btn-sm btn-danger",data: {confirm: "本当に消しますか？"} %>
+      <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete,class:"btn btn-sm btn-danger my-1",data: {confirm: "本当に消しますか？"} %>
      </div>
     <% end %>
    <% end %>
   </div>
   <div>
+
+   <% if current_user != @user %>
+
    <%= form_with(model:[@post, @comment], local: true) do |f| %>
     <%= f.text_area :comment, rows:'5',placeholder: "コメントを入力してください" %>
     <%= f.submit "送信する" %>
    <% end %>
+   <% end %>
   </div>
-  
+
  </div>

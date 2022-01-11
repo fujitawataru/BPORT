@@ -1,0 +1,18 @@
+<h1 >メッセージ一覧</h1>
+<% @anotherEntries.each do |e| %>
+<div class="users-index-item">
+<!-- 左側に最新メッセージを送ったユーザーのプロフィール画像 -->
+  <div class="user-left">
+  <%= link_to room_path(e.room.id) do %>
+    <%= @user.name %>
+  <% end %>
+  </div>
+<!-- 右側に最新メッセージを送ったユーザーの名前及び、そのメッセージ -->
+  <div class="user-right">
+  <%= link_to room_path(e.room.id) do %>
+    <%= e.user.name %>とDMをしよう！<br>
+  <% end %>
+  <%= e.chats.message %>
+  </div>
+</div>
+<% end %>
