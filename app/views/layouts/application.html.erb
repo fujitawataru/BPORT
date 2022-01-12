@@ -34,6 +34,10 @@
                  <%= link_to "投稿一覧", posts_path,class:"nav-link text-light" %>
              </li>
              
+              <li class="nav-item">
+                 <%= link_to "お問い合わせ", new_inquiry_path,class:"nav-link text-light" %>
+             </li>
+             
 
             <% else %>
 
@@ -43,6 +47,10 @@
 
              <li class="nav-item">
               <%= link_to"ログイン",new_user_session_path,class:"nav-link text-light" %>
+             </li>
+             
+             <li class="nav-item">
+                 <%= link_to "お問い合わせ", new_inquiry_path,class:"nav-link text-light" %>
              </li>
 
             <% end %>

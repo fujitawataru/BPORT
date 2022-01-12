@@ -1,0 +1,15 @@
+ <%= form_with model:@inquiry,url:confirm_path, local:true do |f| %>
+  <div class="form-group">
+    <%= f.label :name, '名前' %>
+    <%= f.text_field :name, autofocus: true, class: 'form-control',id:'名前' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :message, 'メッセージ*' %>
+    <%= f.text_area :message, size: '10x10', class: 'form-control',id:'メッセージ' %>
+  </div>
+
+  <div>
+    <%= f.submit '入力内容確認' %>
+  </div>
+<% end %>

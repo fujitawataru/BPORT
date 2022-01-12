@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   def search
    @posts = Post.search(params[:keyword])
    @keyword = params[:keyword]
+   @tags = Post.tag_counts_on(:tags).order('count DESC') #この記述がないとrender時にエラーのため追加
    render "index"
   end
 
