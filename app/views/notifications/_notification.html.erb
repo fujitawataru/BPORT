@@ -1,0 +1,21 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<% post = notification.post %>
+
+<div class= "container">
+  <div class="row" >
+    <div class="col-lg-12">
+
+      <%= link_to user_path(notification.visitor) do %>
+        <%= visitor.name %>さんが
+      <% end %>
+      <% if notification.action=='follow' %>
+        あなたをフォローしました
+      <% end %>
+
+      <% if notification.action=='comment' %>
+        あなたの投稿にコメントしました
+      <% end %>
+    </div>
+  </div>
+</div>

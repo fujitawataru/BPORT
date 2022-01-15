@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_12_101829) do
+ActiveRecord::Schema.define(version: 2022_01_15_042202) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 2022_01_12_101829) do
     t.string "phone_number", null: false
     t.integer "subject", default: 0, null: false
     t.text "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "post_id"
+    t.integer "comment_id"
+    t.integer "room_id"
+    t.integer "chat_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

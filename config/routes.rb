@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   resources :chats, only: [:create]
   resources :rooms, only: [:create, :show, :index]
   resources :inquiries, only: [:new, :create]
+  
   post 'inquiries/confirm'=>'inquiries#confirm', as:'confirm'
   post 'inquiries/back' =>'inquiries#back', as:'back'
   get 'inquiries/thanks' =>'inquiries#thanks', as:'thanks'
+  
+  resources :notifications, only: :index
+  
 end

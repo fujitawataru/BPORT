@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h4>通知</h4>
+      <% if @notifications.exists? %>
+       <%= render @notifications %>
+      <% else %>
+      <p>通知はありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
