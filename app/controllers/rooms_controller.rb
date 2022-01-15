@@ -32,7 +32,7 @@ class RoomsController < ApplicationController
      myRoomIds << entry.room.id
     end
 
-    @anotherEntries = Entry.where(room_id: myRoomIds).where('user_id != ?',@user.id)
+    @anotherEntries = Entry.where(room_id: myRoomIds).where.not(user_id: current_user.id)
   end
 
 end
