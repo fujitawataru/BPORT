@@ -17,14 +17,14 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :chats, only: [:create]
+  resources :chats, only: [:create, :destroy]
   resources :rooms, only: [:create, :show, :index]
   resources :inquiries, only: [:new, :create]
-  
+
   post 'inquiries/confirm'=>'inquiries#confirm', as:'confirm'
   post 'inquiries/back' =>'inquiries#back', as:'back'
   get 'inquiries/thanks' =>'inquiries#thanks', as:'thanks'
-  
-  resources :notifications, only: :index
-  
+
+  resources :notifications, only: [:index, :destroy]
+
 end

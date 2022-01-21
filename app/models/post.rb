@@ -4,6 +4,17 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  
+  validates :title,
+  length: { minimum: 1, maximum: 20 }
+  
+  validates :text,
+  length: { minimum: 1, maximum: 100 }
+  
+  
+  
+  
+  enum status: { recruitment: 0, matched: 1, going: 2, solved: 3}
 
   def self.search(keyword)
     #9,10行だとArgumentError (wrong number of arguments (given 0, expected 1)):というエラー表示
@@ -22,7 +33,7 @@ class Post < ApplicationRecord
     save_notification_comment!(current_user, comment_id, user_id)
   end
 
-    def save_notification_comment!(current_user, comment_id, visited_id)
+  def save_notification_comment!(current_user, comment_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
       post_id: id,
@@ -35,5 +46,5 @@ class Post < ApplicationRecord
        notification.checked = true
     end
     notification.save if notification.valid?
-    end
+  end
 end

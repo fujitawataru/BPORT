@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @posts = @user.posts.page(params[:page]).reverse_order
     @following_users = @user.following_user
     @follower_users = @user.follower_user
-    
+
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     if @user.id == current_user.id
@@ -24,9 +24,9 @@ class UsersController < ApplicationController
       @entry = Entry.new
     end
     end
-    
+
     #@rooms = @user.rooms  #マイページにDM履歴リンク作成のため追加
-    
+
   end
 
   def edit
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
    if @user.update(user_params)
-    redirect_to user_path(@user.id), notice: 'You have updated user successfully.'
+    redirect_to user_path(@user.id), notice: 'ユーザ情報を更新しました'
    else
     render :edit
    end

@@ -11,11 +11,19 @@
       <% end %>
       <% if notification.action=='follow' %>
         あなたをフォローしました
+        <%= time_ago_in_words(notification.created_at) %>前 
       <% end %>
 
       <% if notification.action=='comment' %>
         あなたの投稿にコメントしました
+        <%= time_ago_in_words(notification.created_at) %>前
       <% end %>
+      
+      <% if notification.action=='dm' %>
+        あなたにダイレクトメッセージを送信しました
+        <%= time_ago_in_words(notification.created_at) %>前
+      <% end %>
+      
     </div>
   </div>
 </div>

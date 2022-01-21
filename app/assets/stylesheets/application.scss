@@ -16,3 +16,24 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+// .n-circle {
+//  position: absolute;
+//   padding-left: 1rem;
+//   padding-top: 0rem;
+//   color: #efa04c;
+// }
+
+#error_explanation{
+  color:red;
+}
+
+.notice {
+  color: #008000;
+}
+
+.top-image {
+  background-image:image-url('BPORT-about-top.jpeg');
+  backgrpund-size: auto;
+  background-position: center;
+}

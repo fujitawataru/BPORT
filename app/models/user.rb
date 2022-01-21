@@ -1,22 +1,33 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  attachment :image
+
+
+  validates :name, length: { minimum: 2,maximum: 20 }
+  validates :category, presence: true
+  validates :introduce, length: { maximum: 100 }
+  validates :person, length: {minimum: 1}
+  validates :area, presence: true
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
-  
+
   has_many :comments, dependent: :destroy
-  
+
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
-  
+
   has_many :entries, dependent: :destroy
   has_many :chats, dependent: :destroy
   #has_many :rooms, through: :entries, source: :room #マイページにDM履歴リンク作成のため追加
-  
+
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
@@ -34,8 +45,8 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
-  
-  
+
+
   #通知メソッド
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
@@ -47,8 +58,6 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
-  attachment :image
 
   enum area:{
     "---":0,

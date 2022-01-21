@@ -5,9 +5,16 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :message, 'メッセージ*' %>
+    <%= f.label :message, 'メッセージ' %>
     <%= f.text_area :message, size: '10x10', class: 'form-control',id:'メッセージ' %>
   </div>
+  
+  <div class="form-group">
+    <%= f.select :subject, Inquiry.subjects.keys.map {|k| [I18n.t("enums.inquiry.subject.#{k}"), k]} %>
+  </div>
+
+      <%= f.submit "更新",class:"btn btn-success" %>
+  <% end %>
 
   <div>
     <%= f.submit '入力内容確認' %>

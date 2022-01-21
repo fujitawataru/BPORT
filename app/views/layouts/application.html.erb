@@ -41,13 +41,15 @@
              <li class="nav-item">
                  <%= link_to "メッセージ", rooms_path,class:"nav-link text-light" %>
              </li>
-
+             
+             　<% if unchecked_notifications.any? %>
+               <span class= "n-circle"><i class="fa fa-circle" style="color: gold;"></i></span>
+            　 <% end %>
              <li class="nav-item">
                  <%= link_to "通知", notifications_path,class:"nav-link text-light" %>
              </li>
-
-
-
+　　　　　　
+　　　　　　
             <% else %>
 
              <li class="nav-item">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_15_042202) do
+ActiveRecord::Schema.define(version: 2022_01_21_104554) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id"
@@ -65,9 +65,10 @@ ActiveRecord::Schema.define(version: 2022_01_15_042202) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
-    t.string "text"
+    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -122,7 +123,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_042202) do
     t.integer "category"
     t.string "introduce"
     t.string "person"
-    t.integer "image_id"
+    t.string "image_id"
     t.integer "area"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
