@@ -4,16 +4,10 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  
-  validates :title,
-  length: { minimum: 1, maximum: 20 }
-  
-  validates :text,
-  length: { minimum: 1, maximum: 100 }
-  
-  
-  
-  
+
+  validates :title, presence: true
+  validates :text, presence: true
+
   enum status: { recruitment: 0, matched: 1, going: 2, solved: 3}
 
   def self.search(keyword)
@@ -27,8 +21,8 @@ class Post < ApplicationRecord
     #以下のメソッドではログインユーザ以外のコメントしたことのある全てのユーザを検索してしまう
     #temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
     #temp_ids.each do |temp_id|
-    
-    
+
+
     # まだ誰もコメントしていない場合は、投稿者に通知を送る
     save_notification_comment!(current_user, comment_id, user_id)
   end

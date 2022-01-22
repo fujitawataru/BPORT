@@ -1,4 +1,17 @@
 ja:
+  activerecord:
+    attributes:
+      inquiry:
+        name: '名前'
+        email: 'メールアドレス'
+        message: 'メッセージ'
+      user:
+        name: '名前'
+        introduce: '紹介文'
+        person: '担当者名'
+      post:
+        title: '標題'
+        text: '投稿'
   enums:
     inquiry:
       subject:

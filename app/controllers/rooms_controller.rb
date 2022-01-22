@@ -14,17 +14,23 @@ class RoomsController < ApplicationController
       @chats = @room.chats
       @chat = Chat.new
       @entries = @room.entries
+      
+      @currentEntries = current_user.entries
+       myRoomIds = []
+
+      @currentEntries.each do |entry|
+       myRoomIds << entry.room.id
+      end
+      @anotherEntries = Entry.where(room_id: myRoomIds).where.not(user_id: current_user.id)
     else
       redirect_back(fallback_location: root_path)
     end
   end
 
   def index
-
     @rooms = Room.all
     @entries = Entry.all
     @user = current_user
-
     @currentEntries = current_user.entries
     myRoomIds = []
 

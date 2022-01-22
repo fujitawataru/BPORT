@@ -4,13 +4,16 @@
     <title>BPORT</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
     <script src="https://kit.fontawesome.com/2370f14d43.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-     <header>
+     <header class="mb-3">
        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
         <div class="container">
           <a class="navbar-brand" href="/">BPORT</a>
@@ -41,15 +44,15 @@
              <li class="nav-item">
                  <%= link_to "メッセージ", rooms_path,class:"nav-link text-light" %>
              </li>
-             
+
              　<% if unchecked_notifications.any? %>
                <span class= "n-circle"><i class="fa fa-circle" style="color: gold;"></i></span>
             　 <% end %>
              <li class="nav-item">
                  <%= link_to "通知", notifications_path,class:"nav-link text-light" %>
              </li>
-　　　　　　
-　　　　　　
+
+
             <% else %>
 
              <li class="nav-item">
@@ -77,5 +80,14 @@
 
       <%= yield %>
      </main>
+     <footer class="bg-secondary text-white">
+      <div class="container mt-5">
+        <div class= "row">
+         <div class="mx-auto">
+          <p>© All rights reserved by  BPORT.inc</p>
+         </div>
+        </div>
+      </div>
+     </footer>
   </body>
 </html>
