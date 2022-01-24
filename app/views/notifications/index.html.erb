@@ -2,12 +2,20 @@
   <div class="row">
     <div class="col-lg-12">
       <h4>通知</h4>
-      <%= link_to "通知削除", notification_path(@notifications), method: :delete %>
       <% if @notifications.exists? %>
-       <%= render @notifications %>
+      
+        <%= link_to notification_path(@notifications), method: :delete do %>
+          <p> <i class="fas fa-trash mr-2"></i>通知クリア</p>
+        <% end %>
+      
+        <%= render @notifications %>
+       
       <% else %>
-      <p>通知はありません</p>
+      
+        <h5 class="text-center m-3">通知はありません</h5>
+      
       <% end %>
+      
     </div>
   </div>
 </div>

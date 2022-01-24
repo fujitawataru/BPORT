@@ -7,20 +7,20 @@
     <div class="col-lg-12">
 
       <%= link_to user_path(notification.visitor) do %>
-        <%= visitor.name %>さんが
+        <%= visitor.name %>
       <% end %>
       <% if notification.action=='follow' %>
-        あなたをフォローしました
+        さんがあなたをフォローしました
         <%= time_ago_in_words(notification.created_at) %>前 
       <% end %>
 
       <% if notification.action=='comment' %>
-        あなたの投稿にコメントしました
+        さんがあなたの投稿にコメントしました
         <%= time_ago_in_words(notification.created_at) %>前
       <% end %>
       
       <% if notification.action=='dm' %>
-        あなたにダイレクトメッセージを送信しました
+        さんがあなたにダイレクトメッセージを送信しました
         <%= time_ago_in_words(notification.created_at) %>前
       <% end %>
       

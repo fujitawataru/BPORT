@@ -28,10 +28,11 @@ class PostsController < ApplicationController
   end
 
   def search
-   @posts = Post.search(params[:keyword])
+   @post = Post.search(params[:keyword]) #「〇〇件の該当がありました」用に追加
+   @posts = Post.search(params[:keyword]).page(params[:page]).per(10)
    @keyword = params[:keyword]
    @tags = Post.tag_counts_on(:tags).order('count DESC') #この記述がないとrender時にエラーのため追加
-   render "index"
+   render "search"
   end
 
   def edit

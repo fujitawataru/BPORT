@@ -1,25 +1,30 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>メッセージ相手</th>
-            <th>メッセージ内容</th>
-          </tr>
-        </thead>
+      <% if @anotherEntries.exists? %>
+       <table class="table">
+         <thead>
+           <tr>
+             <th>メッセージ相手</th>
+             <th>メッセージ内容</th>
+           </tr>
+         </thead>
         
-        <tbody>
-          <% @anotherEntries.each do |entry| %>
-          <tr>
-            <td><%= link_to entry.user.name,user_path(entry.user) %></td>
-            <td><%= link_to room_path(entry.room) do %>
-                 <%= Chat.find_by(id: entry.room.chat_ids.last)&.message %></td>
-                <% end %>
-          <% end %>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+         <tbody>
+           <% @anotherEntries.each do |entry| %>
+           <tr>
+             <td><%= link_to entry.user.name,user_path(entry.user) %></td>
+             <td><%= link_to room_path(entry.room) do %>
+                  <%= Chat.find_by(id: entry.room.chat_ids.last)&.message %></td>
+                 <% end %>
+           <% end %>
+           </tr>
+         </tbody>
+       </table>
+       
+      <% else %>
+      <h5 class="text-center m-3">メッセージのやりとりはありません</h5>
+      <% end %>
+     </div>
   </div>
 </div>
