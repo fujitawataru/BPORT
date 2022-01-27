@@ -49,7 +49,7 @@
    <div class="row">
    <% @post.comments.each do |comment| %>
      <div class="col-2 text-center">
-      <%= attachment_image_tag comment.user, :image,size: '50x50', format: 'jpeg', fallback: "no.image.png" %>
+      <%= attachment_image_tag comment.user, :image,size: '50x50', format: 'jpeg', fallback: "no.image.png", class:"circle" %>
      </div>
      <div class="col-10">
       <small><%= comment.user.name %>　　<%= comment.created_at.strftime('%Y/%m/%d') %></small>

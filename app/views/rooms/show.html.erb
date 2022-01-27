@@ -1,47 +1,49 @@
-<h1>DM</h1>
-
-<% @anotherEntries.each do |entry| %>
-  <%= link_to user_path(entry.user.id) do %>
-  <h5><strong><%= entry.user.name %></strong></h5>
-  <% end %>
-<% end %>
-
-
-<hr>
-
-
+<div class="dm-room">
 <div class="col-10 offset-1">
-<% if @chats.present? %>
-  <% @chats.each do |chat| %>
-   <% if chat.user.id == current_user.id %>
-    <div class="text-right">
-      <span class="current_user">
-      <strong><%= safe_join(chat.message.split("\n"),tag(:br)) %></strong></span><%= link_to "削除", chat_path(chat.id), method: :delete, class:"btn btn-sm btn-danger" %>
-    </div>
-     <hr>
-   <% else %>
-   <div class="text-left">
-    <span class="visited_user"><strong><%= safe_join(chat.message.split("\n"),tag(:br)) %></strong></span>
-    <%= link_to user_path(chat.user.id) do %>
-     <p class="mt-1"><small><%= chat.user.name %>さん</small></p>
+  <h1>DM</h1>
+
+  <% @anotherEntries.each do |entry| %>
+    <%= link_to user_path(entry.user.id) do %>
+     <h5><strong><%= entry.user.name %></strong></h5>
     <% end %>
-   </div>
-   <% end %>
-
   <% end %>
-
-<% else %>
-
-  <h3 class="text-center">メッセージはまだありません</h3>
-
-<% end %>
-
 </div>
 
-<div class="form-group text-center">
-<%= form_with model:@chat, local:true do |f| %>
-  <%= f.text_area:message,class:"form-control",:placeholder => "メッセージを入力して下さい" , :size => 70 %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <%= f.submit "投稿する",class:"btn btn-success btn-lg mt-3" %>
-<% end %>
+     <div class="col-10 offset-1">
+　　　  <% if @chats.present? %>
+　　　    <% @chats.each do |chat| %>
+　　　      <% if chat.user.id == current_user.id %>
+　　　        <div class="text-right current_user">
+　　　          <p><strong><%= safe_join(chat.message.split("\n"),tag(:br)) %></strong></p>
+　　　          <div class="mt-2 mr-3">
+　　　            <%= link_to "削除", chat_path(chat.id), method: :delete, class:"btn btn-sm btn-danger" %>
+　　　          </div>
+　　　        </div>
+　　　      <% else %>
+　　　       <div class= "partner_user">
+　　　         <div class= "text-center partner_user_img">
+　　　           <%= attachment_image_tag chat.user, :image, size: '50x50', format: 'jpeg',  fallback: 'no.image.png',class:"circle" %>
+　　　         </div>
+　　　         <div class= "chatting">
+　　　           <div class= "says">
+　　　            <p><strong><%= safe_join(chat.message.split("\n"),tag(:br)) %></strong></p>
+　　　           </div>
+　　　            <p><%= chat.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+               </div>
+　　　       </div>
+　　　      <% end %>
+           <% end %>
+         <% else %>
+           <h3 class="text-center">メッセージはまだありません</h3>
+         <% end %>
+     </div>
+<div class="col-10 offset-1">
+ <div class="form-group text-center">
+  <%= form_with model:@chat, local:true do |f| %>
+   <%= f.text_area:message,class:"form-control",:placeholder => "メッセージを入力して下さい" , :size => 70 %>
+   <%= f.hidden_field :room_id, :value => @room.id %>
+   <%= f.submit "投稿する",class:"btn btn-success btn-lg my-3" %>
+  <% end %>
+ </div>
+</div>
 </div>

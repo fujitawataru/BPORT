@@ -1,68 +1,83 @@
-<div class>
-    <div class="col-12 top-image">
-      <h1 class="text-center my" style="color:#fff;">企業が集まる港へ、あなたも</h1>
-      <p class="text-center pt-3 pb-3" style="color:#fff;">BPORTなら、あなたの求めるビジネスパートナーが見つかります</p>
-　　　<div class="pt- pb-4 text-center">
-　　　  <%= link_to "無料会員登録",new_user_registration_path,class:"btn btn-primary btn-lg" %>
+  <div class="container">
+   <div class="row">
+    <div class="col-12 top-image" style="background-color: rgba(0,0,0,0.5)">
+      <div class="aaa align-items-center">
+       <h1 class="text-center pt-4" style="color:#fff;">企業が集まる港へ、あなたも</h1>
+       <p class="text-center py-2" style="color:#fff;">BPORTなら、あなたの求めるビジネスパートナーが見つかります</p>
+　　　<div class="text-center">
+　　　   <%= link_to "無料会員登録",new_user_registration_path,class:"btn btn-primary btn-lg" %>
 　　　   <%= link_to"ログイン",new_user_session_path,class:"btn btn-secondary btn-lg" %>
 　　　</div>
-    </div>
+　　 </div>
+　　</div>
 
-    <div class="col-12 about">
-      <h1 class="text-center my-3">BPORTとは</h1>
-      <p class="text-center mt-1 mb-3">様々な企業が集まり、</br>
+    <div class="col-12 about d-flex justify-content-center">
+      <div class="box">
+       <h1 class="text-center my-3 ">BPORTとは</h1>
+       <p class="text-center mt-1 mb-3">様々な企業が集まり、</br>
                                   課題や夢を共有し合う、ビジネスマッチングサイトです。</p>
+      </div>
     </div>
 
-    <div class="col-12 detail">
+   <div class="p-5" style="background-color:#F2F2F2;">
+    <div class="container">
       <div class="row">
-        <div class="col-6">
-          <p class="my-3">
+        <div class="col-6 d-flex align-items-center">
+           <p class="text-center">
             まずは夢や希望、課題を投稿してみましょう！</br>
             思わぬ出会いにつながるかもしれません。</p>
         </div>
         <div class="col-6">
-          <%= image_tag 'detail1.png' , :size =>'300x300' %>
+          <img src= "/assets/detail1.png" class="img-fluid detail-image">
         </div>
       </div>
+     </div>
     </div>
 
-    <div class="col-12 detail2">
-      <div class="row">
+    <div class="p-5">
+      <div class="container">
+       <div class="row">
         <div class="col-6">
-          <%= image_tag 'detail2.png' , :size =>'300x300' %>
+          <img src= "/assets/detail2.png" class="img-fluid detail-image">
         </div>
-        <div class="col-6">
-          <p class="my-3">
+        <div class="col-6 d-flex align-items-center">
+          <p class="text-center">
             他社の投稿をチェックしてみましょう！</br>
             自社の成長につながる相談があるかもしれません。
           </p>
         </div>
+       </div>
       </div>
     </div>
-    <div class="col-12 detail3">
+
+   <div class="p-5" style="background-color:#F2F2F2;">
+    <div class="container">
       <div class="row">
-        <div class="col-6">
-          <p class="my-3">
+        <div class="col-6 d-flex align-items-center">
+          <p class="text-center">
             気になった投稿があれば気軽にコメントしてみましょう！</br>
             直接DMを送ることも可能です。
           </p>
         </div>
         <div class="col-6">
-          <%= image_tag 'detail3.png' , :size =>'300x300' %>
+         <img src= "/assets/detail3.png" class="img-fluid detail-image">
         </div>
       </div>
     </div>
+   </div>
 
-    <div class="col-12 last">
-      <h1 class="text-center mt-3 mb-3">さあ、みんなが集まる港の一員へ</br>
-                                        あなたも</h1>
-      <p class="text-center pt-3 pb-3">登録に必要な時間は１分程度です。</p>
-　　　<div class="pt- pb-4 text-center">
-　　　  <%= link_to "無料会員登録",new_user_registration_path,class:"btn btn-primary btn-lg" %>
-　　　   <%= link_to"ログイン",new_user_session_path,class:"btn btn-secondary btn-lg" %>
-　　　</div>
-    </div>
+ 
+
+        <div class="col-12 p-5 align-items-center">
+         <h1 class="text-center">さあ、始めよう</h1>
+         <p class="text-center">登録に必要な時間は１分程度です。</p>
+　　　   <div class="text-center">
+　　　     <%= link_to "無料会員登録",new_user_registration_path,class:"btn btn-primary btn-lg" %>
+　　　     <%= link_to"ログイン",new_user_session_path,class:"btn btn-secondary btn-lg" %>
+　　     </div>
+        </div>
+
 
   </div>
-</div>
+  </div>
+  </div>

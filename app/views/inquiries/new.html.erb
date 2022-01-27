@@ -1,6 +1,6 @@
 <div class= "container">
   <div class= "row">
-    <div class="col-12">
+    <div class="col-12 py-3">
     <h2>問い合わせ</h2>
     
     <% if @inquiry.errors.any? %>
@@ -35,8 +35,8 @@
        <%= f.select :subject, Inquiry.subjects.keys.map {|k| [I18n.t("enums.inquiry.subject.#{k}"), k]} %>
      </div>
 
-     <div>
-       <%= f.submit '入力内容確認' %>
+     <div class="form-group">
+       <%= f.submit '入力内容確認',class:"btn btn-primary btn-block btn-raised" %>
      </div>
    <% end %>
    </div>

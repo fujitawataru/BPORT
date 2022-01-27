@@ -2,7 +2,9 @@
  <div class="row">
     <div class="col-md-3">
       <h3 class="text-center mb-5">ユーザ情報</h3>
-      <%= attachment_image_tag @user, :image, size: '50x50', format: 'jpeg',  fallback: 'no.image.png',class:"circle" %>
+       <div class="text-center mb-3">
+        <%= attachment_image_tag @user, :image, size: '70x70', format: 'jpeg', fallback: 'no.image.png', class:"circle" %>
+       </div>
       <table class="table">
        <tbody>
         <tr>

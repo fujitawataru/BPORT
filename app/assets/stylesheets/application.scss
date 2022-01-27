@@ -38,10 +38,42 @@
   background-image:image-url('BPORT-about-top.jpeg');
   backgrpund-size: auto;
   background-position: center;
+  height: 300px;
+  width: 100%;
+
+}
+
+.aaa{
+  background-color: rgba(0,0,0,0.5);
+  height: 300px;
+}
+
+.about{
+  height: 300px;
+  width: 100%;
+  // display:  table-cell;
+  // vertical-align:  middle;
+}
+
+.box{
+  margin: auto;
+}
+
+.detail-image{
+  
+}
+
+.circle {
+ border-radius: 50%;
+ object-fit: contain;
 }
 
 .detail {
+  height: 300px;
   background-color:#E6E6FA;
+}
+
+.box-detail{
 }
 
 .detail3 {
@@ -49,25 +81,76 @@
 }
 
 .current_user{
- background-color:#99FF99;
- border-radius: 50px;
- padding: 10px;
- box-sizing: border-box;
- overflow-wrap: break-word;
+// margin: 10px 0;
 }
 
-.visited_user{
- border-radius: 50px;
- border :  1px solid;
+.current_user p {
+ display: inline-block;
+ position: relative;
+ margin: 0 10px 0 0;
  padding: 10px;
- box-sizing: border-box;
- overflow-wrap: break-word;
+ max-width: 250px;
+ border-radius: 12px;
+ background: #30e852;
+ font-size: 15px;
 }
 
-.circle {
-  border-radius: 50%;
-  object-fit: contain;
+.current_user p:after {
+ content: "";
+ position: absolute;
+ top: 3px;
+ right: -19px;
+ border: 8px solid transparent;
+ border-left: 18px solid #30e852;
+ -webkit-transform: rotate(-35deg);
+ transform: rotate(-35deg);
 }
+
+.partner_user {
+ width: 100%;
+// margin: 10px 0;
+ overflow: hidden;
+}
+
+.partner_user .partner_user_img {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+
+.partner_user .chatting {
+  width: 100%;
+  text-align: left;
+}
+
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.says p {
+  margin: 0;
+  padding: 0;
+}
+
+
 
 .follow:hover{
   background-color: #C0C0C0;
@@ -77,25 +160,14 @@
   background-color: #C0C0C0;
 }
 
-.link{
-  text-decoration: none;
+.dm-room{
+  background-color: #99CCFF;
 }
 
-.navbar-li{
- color: #808080;
-}
-
-input[type="text"] {
-        width: 300px;
-        height: 40px;
-    }
-@media screen and (max-width: 1024px) {
-}
-
-@media screen and (max-width: 768px) {
-
-}
-
- @media screen and (max-width: 425px) {
-
-}
+// footer{
+// position: absolute;
+// bottom: 0;
+// left: 0;
+// width: 100%;
+// height: 30px;
+// }
