@@ -38,6 +38,7 @@ class PostsController < ApplicationController
   def edit
    @post = Post.find(params[:id])
    @user = @post.user
+   redirect_to user_path(current_user) unless current_user.id == @post.user_id
   end
 
   def update
