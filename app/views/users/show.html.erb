@@ -59,13 +59,13 @@
 
      <% else %>
        <% if @isRoom == true %>
-         <p class="text-center"><%= link_to "チャットへ", room_path(@roomId),class:"btn btn-outline-secondary btn-block" %></p>
+         <p class="py-2 text-center"><%= link_to "チャットへ", room_path(@roomId),class:"btn btn-outline-secondary btn-block" %></p>
        <% else %>
          <%= form_for @room do |f| %>
           <%= fields_for @entry do |e| %>
            <%= e.hidden_field :user_id, :value=> @user.id %>
           <% end %>
-         <%= f.submit "チャットを始める" %>
+         <p class="py-2 text-center"><%= f.submit "チャットを始める" %></p>
         <% end %>
        <% end %>
      <% end %>
