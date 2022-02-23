@@ -4,7 +4,7 @@
    <table class="table">
      <tr>
       <th>名前</th>
-      <td><%= link_to user_path(current_user) do %>
+      <td><%= link_to user_path(@user) do %>
           <%= attachment_image_tag @user, :image,width: '10%', height: '10%', format: 'jpeg', fallback: "no.image.png",class:"circle" %>
           <%= @user.name %>
           <% end %></td>
