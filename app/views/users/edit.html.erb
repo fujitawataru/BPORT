@@ -18,15 +18,15 @@
        <%= form_with model:@user,local:true do |f| %>
 
        <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">名前</label>
         <p><%= f.text_field :name,class:"form-control",id:"name"%></p>
        </div>
 
-       <p>Image</p>
+       <p>アイコン</p>
         <p><%= f.attachment_field :image %></p>
 
         <div class="form-group">
-         <label for="introduce">introduction</label>
+         <label for="introduce">紹介文</label>
          <p><%= f.text_area :introduce, class:"form-control",id:"introduce" %></p>
         </div>
 
