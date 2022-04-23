@@ -1,6 +1,6 @@
 <div class="container px-5 px-sm-0">
  <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 mt-3">
       <h3 class="text-center mb-5">ユーザ情報</h3>
        <div class="text-center mb-3">
         <%= attachment_image_tag @user, :image, size: '70x70', format: 'jpeg', fallback: 'no.image.png', class:"circle" %>
@@ -79,7 +79,7 @@
     <% end %>
   </div>
 
-    <div class="col-md-9">
+    <div class="col-md-9 mt-3">
       <h2 class="mb-5">投稿一覧</h2>
       <% if @posts.exists? %>
        <table class="table table-hover">
