@@ -1,4 +1,4 @@
- <%= form_with model:@inquiry,url:confirm_path, local:true do |f| %>
+<%= form_with model:@inquiry,url:confirm_path, local:true do |f| %>
   <div class="form-group">
     <%= f.label :name, '名前' %>
     <%= f.text_field :name, autofocus: true, class: 'form-control',id:'名前' %>
@@ -13,7 +13,7 @@
     <%= f.select :subject, Inquiry.subjects.keys.map {|k| [I18n.t("enums.inquiry.subject.#{k}"), k]} %>
   </div>
 
-      <%= f.submit "更新",class:"btn btn-success" %>
+  <%= f.submit "更新",class:"btn btn-success" %>
   <% end %>
 
   <div>

@@ -22,9 +22,9 @@ class PostsController < ApplicationController
   def index
    @posts = Post.limit(10).order(" created_at DESC ")
    @tags = Post.tag_counts_on(:tags).order('count DESC')     # 全タグ(Postモデルからtagsカラムを降順で取得)
-  if @tag = params[:tag]   # タグ検索用
+   if @tag = params[:tag]   # タグ検索用
     @post = Post.tagged_with(params[:tag])   # タグに紐付く投稿
-  end
+   end
   end
 
   def search

@@ -6,7 +6,6 @@ class ChatsController < ApplicationController
     if Entry.where(:user_id => current_user.id, :room_id => params[:chat][:room_id]).present?
       @chat = Chat.create(params.require(:chat).permit(:user_id, :message, :room_id).merge(:user_id => current_user.id))
       @room=@chat.room
-
       #通知レコード作成
       #DMされたユーザのentry_idを取得
       @roommembernotme=Entry.where(room_id: @room.id).where.not(user_id: current_user.id)
@@ -23,9 +22,7 @@ class ChatsController < ApplicationController
                 notification.checked = true
             end
             notification.save if notification.valid?
-
       # @room.create_notification_chat!(current_user, @chat.id) #通知機能のため
-
             redirect_to "/rooms/#{@chat.room_id}"
     else
       redirect_back(fallback_location: root_path)

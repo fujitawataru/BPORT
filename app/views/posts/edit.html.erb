@@ -1,46 +1,38 @@
 <p id="notice"></p>
 <div class="container">
- <div class="row">
-  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-   <h2>投稿編集画面</h2>
-
-    <% if @post.errors.any? %>
-     <div id="error_explanation">
-      <h2><%= @post.errors.count %>件のエラーが発生しました</h2>
-       <ul>
-        <% @post.errors.full_messages.each do |message| %>
-         <li><%= message %></li>
-        <% end %>
-       </ul>
-     </div>
-    <% end %>
-
-    <%= form_with model:@post,local:true do |f| %>
-
-    <div class="form-group">
-     <label for="標題">標題</label>
-     <p><%= f.text_field :title,class:"form-control",id:"標題" %></p>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>投稿編集画面</h2>
+      <% if @post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= @post.errors.count %>件のエラーが発生しました</h2>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= form_with model:@post,local:true do |f| %>
+        <div class="form-group">
+          <label for="標題">標題</label>
+          <p><%= f.text_field :title,class:"form-control",id:"標題" %></p>
+        </div>
+        <div class="form-group">
+          <label for="タグ">タグ</label>
+            <%=f.text_field :tag_list, value: @post.tag_list.join(','),class:"form-control",:placeholder => " , で区切ると複数登録できます　", id:"タグ"%>
+        </div>
+        <div class="form-group">
+          <label>進捗状況</label></br>
+          <%= f.select :status, Post.statuses.keys.map {|k| [I18n.t("enums.post.status.#{k}"), k]} %>
+　　    </div>
+        <div class="form-group">
+          <label for="内容">内容</label>
+          <p><%= f.text_area :text,class:"form-control",id:"内容" %></p>
+        </div>
+        <p><%= f.submit "編集をする",class:"btn btn-success" %></p>
+　　    <%= link_to "投稿詳細画面", post_path(@post.id) %> | <%= link_to "マイページ",user_path(current_user.id) %>
+　    <% end %>
     </div>
-
-    <div class="form-group">
-      <label for="タグ">タグ</label>
-      <%=f.text_field :tag_list, value: @post.tag_list.join(','),class:"form-control",:placeholder => " , で区切ると複数登録できます　", id:"タグ"%>
-     </div>
-
-     <div class="form-group">
-      <label>進捗状況</label></br>
-      <%= f.select :status, Post.statuses.keys.map {|k| [I18n.t("enums.post.status.#{k}"), k]} %>
-　　 </div>
-
-    <div class="form-group">
-     <label for="内容">内容</label>
-     <p><%= f.text_area :text,class:"form-control",id:"内容" %></p>
-    </div>
-
-     <p><%= f.submit "編集をする",class:"btn btn-success" %></p>
-
-    <%= link_to "投稿詳細画面", post_path(@post.id) %> | <%= link_to "マイページ",user_path(current_user.id) %>
-    <% end %>
-   </div>
   </div>
- </div>
+</div>
