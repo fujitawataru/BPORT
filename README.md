@@ -33,10 +33,12 @@ BPORTは企業の抱える問題や実現したい夢を企業同士が気軽に
 ビジネスパートナーを見つけたいとき、自社の課題解決を解決したいとき
 
 ## 設計書
-<...>
+テーブル定義書<https://docs.google.com/spreadsheets/d/1EHhJVcoPs0MOhwoj8UWInZpy6Xf0_FSegj5r78NIoGY/edit#gid=2036260425>
+ER図<https://app.diagrams.net/#G1S36ujSjm7h0G-F2rn0PDsfxTO2TwohkT>
+詳細設計書<https://docs.google.com/spreadsheets/d/1N9b3PblP47B7JoLBnhqg_FEBBXximH6a/edit#gid=549108681>
 
 ## チャレンジ要素一覧
-https://docs.google.com/spreadsheets/d/18MpexZ02laf57-dmtHMtXUnEQVFva9DUB6Y1P46Pq5k/edit#gid=0
+<https://docs.google.com/spreadsheets/d/18MpexZ02laf57-dmtHMtXUnEQVFva9DUB6Y1P46Pq5k/edit#gid=0>
 
 ## 開発環境
 - OS：Amazon Linux release 2 (Karoo)
